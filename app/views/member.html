@@ -1,0 +1,30 @@
+<div ng-controller="MembersCtrl as member">
+
+<div ng-repeat="i in member.information  | filter: whichMemberId">
+	<h2>{{i.screenName}}</h2> <br />
+	Name: {{i.firstName}} {{i.lastName}} <br />
+	Location: {{i.location}} 
+</div>
+<br />
+<div class = "table-responsive">
+	<table class="table table-bordered">
+		<tr>
+			<td>
+				Business
+			</td>
+			<td>
+				Rating
+			</td>
+			<td>
+				Review
+			</td>
+		</tr>
+		<tr ng-repeat="r in member.reviews  | filter: whichMemberId">
+	    	<td> <a href="#/reviews/{{ r.businessName }}">{{r.businessName}} </a></td>
+	    	<td> {{r.rating}} </td>
+	    	<td> {{r.comment}} </td>
+	    </tr>
+	</table>
+</div>
+</div>
+

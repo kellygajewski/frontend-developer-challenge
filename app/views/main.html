@@ -1,0 +1,21 @@
+<div ng-controller="MainCtrl as business">
+  <div class = "table-responsive">
+    <table class="table table-bordered">
+      <tr>
+        <td>Business</td>
+        <td>Average Rating</td>
+      </tr>
+      <tr ng-repeat = "r in business.reviews  | unique: 'businessName'">
+        <td>
+          <a href="#/reviews/{{ r.businessName }}">{{ r.businessName }}</a>
+        </td>
+        <td >
+          <div ng-repeat = "a in filtered=(business.reviews | filter: {businessName: r.businessName} | getField: 'rating') track by $index"></div>
+          {{ getAverage(filtered) }}       
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+

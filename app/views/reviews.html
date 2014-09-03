@@ -1,0 +1,30 @@
+<div ng-controller="ReviewsCtrl as business">
+<h2> {{whichBusiness}} </h2>
+
+<div class = "table-responsive">
+	<table class="table table-bordered">
+		<tr>
+			<td>
+				User
+			</td>
+			<td>
+				Rating
+			</td>
+			<td>
+				Review
+			</td>
+		</tr>
+		<tr ng-repeat="r in business.reviews  | filter: whichBusiness">
+	    	<td> 
+	    		<div ng-repeat = "m in business.information | filter: r.reviewerId">
+	    			<a href="#/members/{{ r.reviewerId }}">{{m.screenName}} </a>
+	    		</div>
+	    	</td>
+	    	<td> {{r.rating}} </td>
+	    	<td> {{r.comment}} </td>
+	    </tr>
+	</table>
+</div>
+</div>
+
+
